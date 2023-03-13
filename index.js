@@ -17,5 +17,18 @@ app.get("/tshirt", (req, res) => {
   });
 });
 
-// 'id' is a route param; it captures dynamic values in the url
-app.post("/tshirt/:id", (req, res) => {});
+// 'id' is a route param; it captures dynamic values in the url. Here, it will capture the id of the tshirt we want to update
+app.post("/tshirt/:id", (req, res) => {
+  // we can get the id from the url
+  const { id } = req.params;
+  //'logo' is contained in the request body. This is a custom data payload contained in the incoming request.
+  const { logo } = req.body;
+  // if there is no logo, send a 418 error code and a message
+  if (!logo) {
+    res.status(418).send({ message: "we need a logo" });
+  }
+  // if there is a logo, send a success message
+  res.send({
+    tshirt: `tshirt with your logo ${logo} and ID ${id} has been updated`,
+  });
+});

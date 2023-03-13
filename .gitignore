@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Testing directories
+coverage/
+.nyc_output/
+__tests__/
+test/
+
+# Environment variables
+.env
+.env.*
+
+# Build output
+dist/
+build/
+out/
+*.tgz
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

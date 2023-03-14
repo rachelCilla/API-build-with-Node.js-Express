@@ -1,8 +1,10 @@
-const app = require("express")();
+// refactor our code to make a variable for express
+const express = require("express");
+app = express();
 const PORT = 8080;
-
-// our app is listening on port 8080; callback to let us know when the api is ready
-app.listen(PORT, () => console.log(`it\'s alive on http://localhost:${PORT}`));
+// applies express.json middleware. Every req that comes in will first go through this middleware.
+//  The body will be converted to JSON, making it available in our POST callback
+app.use(express.json());
 
 // adding a get endpoint to the tshirt uri
 //passing in '/tshirt' as the first argument automatically creates a get endpoint
@@ -32,3 +34,6 @@ app.post("/tshirt/:id", (req, res) => {
     tshirt: `tshirt with your logo ${logo} and ID ${id} has been updated`,
   });
 });
+
+// our app is listening on port 8080; callback to let us know when the api is ready
+app.listen(PORT, () => console.log(`it\'s alive on http://localhost:${PORT}`));
